@@ -1,5 +1,5 @@
 #!/bin/bash
-number=1
+number=3
 cp /root/.kube/config ./
 docker build . -t asinitsyn1024/test9:$number
 docker push asinitsyn1024/test9:$number
@@ -11,8 +11,9 @@ metadata:
 spec:
   containers:
   - name: sleep
-    image: asinitsyn1024/test9:1
+    image: asinitsyn1024/test9:3
   imagePullSecrets:
   - name: regcred
 EOF
 kubectl apply -f pod.yaml
+rm config
