@@ -28,6 +28,10 @@ import (
 )
 
 func IsDeploymentReady(deploy *appsv1.Deployment) bool {
+    fmt.Println(deploy.Status.Replicas)
+    fmt.Println(deploy.Status.UpdatedReplicas)
+    fmt.Println(deploy.Status.ReadyReplicas)
+    fmt.Println(deploy.Status.AvailableReplicas)
     return deploy.Status.Replicas > 0 &&
 	deploy.Status.UpdatedReplicas == deploy.Status.Replicas &&
 	deploy.Status.ReadyReplicas == deploy.Status.Replicas &&
@@ -75,12 +79,12 @@ func main() {
 	    Containers: []apiv1.Container{
 	    {
 	        Name:  "demo",
-	        Image: "stormstack/sleep:7",
+	        Image: "busybox",
 	        Command: []string{
 	    	"sleep",
 	        },
 	        Args: []string{
-	/	"10000",
+		"10000",
 	        },			    
 	        },
 	    },
@@ -101,6 +105,7 @@ func main() {
 	time.Sleep(30000 * time.Millisecond)
 	fmt.Println("Ticker stopped")
 	if IsDeploymentReady(deployment) == false  {
+	    fmt.Prinln("yes")
 	    err := clientset.AppsV1().Deployments("default").Delete(context.Background(), "demo", metav1.DeleteOptions{})
         if err != nil {
 	fmt.Println(err)
