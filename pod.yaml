@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
   - name: sleep
-    image: asinitsyn1024/test9:24163
+    image: asinitsyn1024/test9:28052
   imagePullSecrets:
   - name: regcred

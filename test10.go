@@ -88,7 +88,7 @@ func main() {
     if err != nil {
 	panic(err)
     }
-    if !IsDeploymentReady(deployment) {	
+    if !IsDeploymentReady(deployment) != true {	
     fmt.Printf("Created deployment %q.\n", result.GetObjectMeta().GetName())
     result, err = clientset.AppsV1().Deployments("default").Get(context.Background(), "demo", metav1.GetOptions{})
     if err != nil {	
