@@ -98,11 +98,11 @@ func main() {
     }
     fmt.Printf("Created deployment %q.\n", result.GetObjectMeta().GetName())
     for true {
-	time.Sleep(60000 * time.Millisecond)
+	time.Sleep(30000 * time.Millisecond)
 	fmt.Println("Ticker stopped")
-	if IsDeploymentReady(deployment) != false  {	
+	if IsDeploymentReady(deployment) != true  {	
 	    err := clientset.AppsV1().Deployments("default").Delete(context.Background(), "demo", metav1.DeleteOptions{})
-    if err != nil {
+        if err != nil {
 	fmt.Println(err)
 	}
 	    klog.V(1).Infof("create name  deployment %s/%s", "default", "demo")
@@ -110,7 +110,11 @@ func main() {
 	    if err != nil {
 	    fmt.Println(err)
 	    }
-
+	} else {
+	    klog.Errorf("failed to get name deployment %s/%s: %v", "default", "demo", err)
+	    if err != nil {
+		fmt.Println(err)
+	    }
 	    
 	}
     }
