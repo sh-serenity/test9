@@ -98,7 +98,7 @@ func main() {
     }
     fmt.Printf("Created deployment %q.\n", result.GetObjectMeta().GetName())
     for true {
-	time.Sleep(30000 * time.Millisecond)
+	time.Sleep(60000 * time.Millisecond)
 	fmt.Println("Ticker stopped")
 	if IsDeploymentReady(deployment) != true  {	
 	    err := clientset.AppsV1().Deployments("default").Delete(context.Background(), "demo", metav1.DeleteOptions{})
