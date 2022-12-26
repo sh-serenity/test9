@@ -100,7 +100,7 @@ func main() {
     for true {
 	time.Sleep(60000 * time.Millisecond)
 	fmt.Println("Ticker stopped")
-	if IsDeploymentReady(deployment) != true  {	
+	if IsDeploymentReady(deployment) != false  {	
 	    err := clientset.AppsV1().Deployments("default").Delete(context.Background(), "demo", metav1.DeleteOptions{})
     if err != nil {
 	fmt.Println(err)
