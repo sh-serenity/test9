@@ -1,9 +1,9 @@
 #!/bin/bash
-number=3
+number=$RANDOM
 cp /root/.kube/config ./
 docker build . -t asinitsyn1024/test9:$number
 docker push asinitsyn1024/test9:$number
-cat > pod.yaml << "EOF"
+cat <<EOF > pod.yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -11,7 +11,7 @@ metadata:
 spec:
   containers:
   - name: sleep
-    image: asinitsyn1024/test9:3
+    image: asinitsyn1024/test9:$number
   imagePullSecrets:
   - name: regcred
 EOF
