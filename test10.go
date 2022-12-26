@@ -110,11 +110,6 @@ func main() {
 	    if err != nil {
 	    fmt.Println(err)
 	    }
-	} else {
-	    klog.Errorf("failed to get name deployment %s/%s: %v", "default", "demo", err)
-	    if err != nil {
-		fmt.Println(err)
-	    }
 	    
 	}
     }
