@@ -76,12 +76,12 @@ func main() {
 	    {
 	        Name:  "demo",
 	        Image: "stormstack/sleep:7",
-	    //    Command: []string{
-	    //	"sleep",
-	    //    },
-	    //    Args: []string{
-	    //	"10000",
-	    //    },			    
+	        Command: []string{
+	    	"sleep",
+	        },
+	        Args: []string{
+	/	"10000",
+	        },			    
 	        },
 	    },
 	    },

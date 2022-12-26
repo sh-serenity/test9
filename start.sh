@@ -1,5 +1,5 @@
 #!/bin/bash
-number=14
+number=20
 cp /root/.kube/config ./
 docker build . -t asinitsyn1024/test9:$number
 docker push asinitsyn1024/test9:$number
