@@ -80,7 +80,7 @@ func main() {
 	    {
 	        Name:  "demo",
 	        Image: "busybox",
-	        Command: []string{
+		Command: []string{
 	    	"sleep",
 	        },
 	        Args: []string{
